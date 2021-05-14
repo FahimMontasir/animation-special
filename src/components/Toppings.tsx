@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -20,18 +21,35 @@ const Toppings = ({ addTopping, pizza }) => {
             ? "active"
             : "";
           return (
-            <li
+            <motion.li
+              whileHover={{
+                originX: 0,
+                scale: 1.3,
+                color: "yellow",
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+              }}
               key={topping}
               onClick={() => addTopping(topping)}
             >
               <span className={spanClass}>{topping}</span>
-            </li>
+            </motion.li>
           );
         })}
       </ul>
 
       <Link to="/order">
-        <button>Order</button>
+        <motion.button
+          whileHover={{
+            scale: 1.1,
+            textShadow: "0px 0px 8px rgb(255,255,255)",
+            boxShadow: "0px 0px 8px rgb(255,255,255)",
+          }}
+        >
+          Order
+        </motion.button>
       </Link>
     </div>
   );
